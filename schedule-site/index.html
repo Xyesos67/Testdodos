@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru" data-zameni-parallel="9">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Расписание 9 классов</title>
+    <link rel="stylesheet" href="css/teachers-excel.css" />
+    <link rel="stylesheet" href="css/parallel-schedule.css" />
+  </head>
+  <body>
+    <main class="public-subs-wrap">
+      <div class="public-subs-head">
+        <h1 class="public-subs-title">
+          Расписание 9 классов
+          <span class="public-subs-title-date" id="publicScheduleDayMeta">· —</span>
+        </h1>
+        <p class="public-subs-status muted" id="publicScheduleStatus"></p>
+      </div>
+
+      <div class="teacher-excel-toolbar">
+        <div class="public-subs-tabs" role="tablist" aria-label="Дни показа расписания">
+          <button type="button" class="public-subs-tab" id="tabPublicScheduleToday" role="tab" aria-selected="false">
+            Сегодня
+          </button>
+          <button type="button" class="public-subs-tab" id="tabPublicScheduleTomorrow" role="tab" aria-selected="true">
+            Завтра
+          </button>
+        </div>
+      </div>
+
+      <section class="public-subs-day public-subs-pane hidden" id="publicScheduleToday"></section>
+      <section class="public-subs-day public-subs-pane" id="publicScheduleTomorrow"></section>
+    </main>
+
+    <script type="module" src="js/schedule-classes.js"></script>
+  </body>
+</html>
