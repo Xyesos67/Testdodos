@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  --bg0: #eef3f0;
+  --bg1: #f7faf8;
+  --ink: #163028;
+  --muted: #5f736b;
+  --line: rgba(22, 48, 40, 0.1);
+  --card: #ffffff;
+  --brand: #1f6b52;
+  --brand-soft: #e5f3ec;
+  --absent: #b42318;
+  --absent-soft: #fdeceb;
+  --duty: #175cd3;
+  --duty-soft: #eff4ff;
+  --replaced: #027a48;
+  --replaced-soft: #e8f8ef;
+  --override: #b54708;
+  --override-soft: #fff4e5;
+  --shadow: 0 18px 48px rgba(22, 48, 40, 0.08);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: Manrope, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(31, 107, 82, 0.12), transparent 60%),
+    radial-gradient(900px 420px at 100% 0%, rgba(23, 92, 211, 0.08), transparent 55%),
+    linear-gradient(180deg, var(--bg1), var(--bg0));
+}
+
+.public-subs-wrap {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2.5rem;
+}
+
+.public-subs-head {
+  text-align: center;
+  margin-bottom: 0.15rem;
+}
+
+.public-subs-title {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--brand);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.35rem 0.45rem;
+}
+
+.public-subs-title-date {
+  font-size: 0.72em;
+  font-weight: 650;
+  color: var(--muted);
+  letter-spacing: -0.01em;
+}
+
+.public-subs-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.public-subs-status.muted {
+  padding: 0;
+}
+
+.public-subs-status:empty {
+  display: none;
+}
+
+.muted {
+  color: var(--muted);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.teacher-excel-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  margin: 0.35rem 0 0.65rem;
+}
+
+.public-subs-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.25rem;
+  width: fit-content;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+
+.public-subs-tab {
+  appearance: none;
+  min-width: 6.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.public-subs-tab:hover {
+  color: var(--ink);
+  background: rgba(31, 107, 82, 0.08);
+}
+
+.public-subs-tab[aria-selected='true'] {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(31, 107, 82, 0.24);
+}
+
+.public-subs-pane.hidden {
+  display: none;
+}
+
+.teacher-excel-sheet {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  /* РЅРµ hidden: РёРЅР°С‡Рµ sticky РєРѕР»РѕРЅРєРё В«РЈС‡РёС‚РµР»СЊВ» Р»РѕРјР°РµС‚СЃСЏ РЅР° iOS/Android */
+  overflow: visible;
+}
+
+.teacher-excel-scroll {
+  overflow: auto;
+  max-height: min(78vh, 920px);
+  border-top: 1px solid var(--line);
+  border-radius: var(--radius) var(--radius) 0 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.teacher-excel-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.teacher-excel-table th,
+.teacher-excel-table td {
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+.teacher-excel-table thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: #f4f8f6;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  height: 2.6rem;
+  padding: 0.35rem 0.25rem;
+}
+
+.teacher-excel-name-head,
+.teacher-excel-name {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  width: 11.5rem;
+  min-width: 11.5rem;
+  max-width: 11.5rem;
+}
+
+/* Р¤Р°РјРёР»РёРё: С‚РѕР»СЊРєРѕ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё, РЅРёР¶Рµ С€Р°РїРєРё */
+.teacher-excel-name {
+  z-index: 3;
+  text-align: left !important;
+  padding: 0.7rem 0.85rem 0.7rem 1rem !important;
+  background: #fbfdfc;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  box-shadow: 4px 0 12px rgba(22, 48, 40, 0.03);
+}
+
+/* РЈРіРѕР» В«РЈС‡РёС‚РµР»СЊВ»: Рё СЃРІРµСЂС…Сѓ, Рё СЃР»РµРІР° вЂ” СЃР°РјС‹Р№ РІС‹СЃРѕРєРёР№ СЃР»РѕР№ */
+.teacher-excel-name-head {
+  top: 0;
+  left: 0;
+  z-index: 10;
+  text-align: left !important;
+  padding-left: 1rem !important;
+  background: #f4f8f6;
+  box-shadow: 4px 4px 12px rgba(22, 48, 40, 0.06);
+}
+
+.teacher-excel-table thead th:not(.teacher-excel-name-head) {
+  min-width: 5.6rem;
+  width: 5.6rem;
+  z-index: 4;
+}
+
+.teacher-excel-name.is-absent,
+.row-absent .teacher-excel-name {
+  background: var(--absent-soft);
+  color: var(--absent);
+  box-shadow:
+    inset 3px 0 0 var(--absent),
+    4px 0 12px rgba(22, 48, 40, 0.03);
+}
+
+.teacher-excel-cell {
+  padding: 0.35rem;
+  background: #fff;
+  min-width: 5.6rem;
+  width: 5.6rem;
+}
+
+.teacher-excel-table tbody tr:hover .teacher-excel-cell.tone-base,
+.teacher-excel-table tbody tr:hover .teacher-excel-cell.tone-empty {
+  background: #f7fbf9;
+}
+
+.teacher-excel-table tbody tr:hover .teacher-excel-name:not(.is-absent) {
+  background: #f3faf6;
+}
+
+.teacher-excel-cell.tone-empty {
+  background: #fafcfb;
+}
+
+.teacher-excel-cell.tone-duty {
+  background: var(--duty-soft);
+}
+
+.teacher-excel-cell.tone-replaced {
+  background: var(--replaced-soft);
+}
+
+.teacher-excel-cell.tone-needs,
+.teacher-excel-cell.is-absent-row {
+  background: var(--absent-soft);
+}
+
+.teacher-excel-cell.tone-cancelled {
+  background: #f2f4f7;
+}
+
+.teacher-excel-cell.tone-override {
+  background: var(--override-soft);
+}
+
+.row-absent .teacher-excel-cell {
+  background: color-mix(in srgb, var(--absent-soft) 70%, white);
+}
+
+.teacher-excel-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.28rem;
+}
+
+.teacher-excel-line {
+  border-radius: 10px;
+  padding: 0.28rem 0.34rem;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.25;
+}
+
+.teacher-excel-line.is-main {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(22, 48, 40, 0.06);
+}
+
+.tone-duty .teacher-excel-line.is-main {
+  color: var(--duty);
+  border-color: rgba(23, 92, 211, 0.14);
+}
+
+.tone-replaced .teacher-excel-line.is-main {
+  color: var(--replaced);
+  border-color: rgba(2, 122, 72, 0.14);
+}
+
+.tone-needs .teacher-excel-line.is-main,
+.is-absent-row .teacher-excel-line.is-main {
+  color: var(--absent);
+}
+
+.tone-override .teacher-excel-line.is-main {
+  color: var(--override);
+}
+
+.teacher-excel-line.is-note {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  padding: 0 0.15rem;
+}
+
+.teacher-excel-line.is-badge {
+  display: inline-flex;
+  align-self: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.12rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(22, 48, 40, 0.06);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.tone-duty .teacher-excel-line.is-badge {
+  background: rgba(23, 92, 211, 0.12);
+  color: var(--duty);
+}
+
+.teacher-excel-line.is-badge.is-class-hour {
+  background: rgba(91, 74, 154, 0.14);
+  color: #5b4a9a;
+}
+
+.teacher-excel-cell.is-event {
+  background: #f6f3fc;
+}
+
+.teacher-excel-line.is-class-hour-main {
+  color: #5b4a9a !important;
+  border-color: rgba(91, 74, 154, 0.22) !important;
+  background: rgba(91, 74, 154, 0.08) !important;
+}
+
+.teacher-excel-line.is-struck {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  color: #8a9691 !important;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.teacher-excel-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 0.85rem;
+  padding: 0.85rem 1rem 1rem;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: #fbfdfc;
+}
+
+.teacher-excel-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.teacher-excel-legend i {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.teacher-excel-legend .lg-duty {
+  background: var(--duty);
+}
+.teacher-excel-legend .lg-replaced {
+  background: var(--replaced);
+}
+.teacher-excel-legend .lg-absent {
+  background: var(--absent);
+}
+.teacher-excel-legend .lg-cancelled {
+  background: #98a2b3;
+}
+
+.teacher-excel-legend .lg-event {
+  background: #5b4a9a;
+}
+
+@media (max-width: 720px) {
+  .public-subs-wrap {
+    padding: 0.85rem 0.55rem 1.75rem;
+  }
+
+  .teacher-excel-name-head,
+  .teacher-excel-name {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    left: 0 !important;
+    width: 7.6rem;
+    min-width: 7.6rem;
+    max-width: 7.6rem;
+    background-clip: padding-box;
+  }
+
+  .teacher-excel-name {
+    z-index: 3 !important;
+    background: #fbfdfc !important;
+    box-shadow: 8px 0 18px rgba(22, 48, 40, 0.14);
+  }
+
+  .teacher-excel-name-head {
+    top: 0 !important;
+    z-index: 12 !important;
+    background: #f4f8f6 !important;
+    box-shadow: 8px 8px 18px rgba(22, 48, 40, 0.16);
+  }
+
+  .teacher-excel-table thead th:not(.teacher-excel-name-head) {
+    z-index: 4 !important;
+  }
+
+  .teacher-excel-name.is-absent,
+  .row-absent .teacher-excel-name {
+    background: var(--absent-soft) !important;
+    box-shadow:
+      inset 3px 0 0 var(--absent),
+      8px 0 18px rgba(22, 48, 40, 0.14);
+  }
+
+  .teacher-excel-table thead th:not(.teacher-excel-name-head),
+  .teacher-excel-cell {
+    min-width: 5.1rem;
+    width: 5.1rem;
+  }
+}
+
+.schedule-hub-back {
+  display: block;
+  width: fit-content;
+  margin: 0 0 0.65rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: left;
+  transition: color 0.15s ease;
+}
+
+.schedule-hub-back:hover,
+.schedule-hub-back:focus-visible {
+  color: var(--brand);
+  outline: none;
+}

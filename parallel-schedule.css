@@ -1,0 +1,226 @@
+/* РЎРµС‚РєР° РїР°СЂР°Р»Р»РµР»Рё вЂ” РєР°Рє РѕС‚С‡С‘С‚ Excel РїРѕ РєР»Р°СЃСЃР°Рј */
+
+.parallel-sheet {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: visible;
+}
+
+/* РљРЅРѕРїРєРё РєР»Р°СЃСЃРѕРІ вЂ” С‚РѕР»СЊРєРѕ РјРѕР±РёР»Р° */
+.parallel-class-picker {
+  display: none;
+}
+
+.parallel-class-btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #f4f8f6;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  line-height: 1.1;
+  min-height: 2.4rem;
+  min-width: 3.2rem;
+}
+
+.parallel-class-btn.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(31, 107, 82, 0.22);
+}
+
+.parallel-scroll {
+  overflow: auto;
+  max-height: min(78vh, 920px);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  border-radius: var(--radius);
+}
+
+.parallel-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.parallel-table th,
+.parallel-table td {
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  box-sizing: border-box;
+}
+
+.parallel-table thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: #1a4a3a;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  height: 2.6rem;
+  padding: 0.4rem 0.55rem;
+}
+
+.parallel-table thead th:not(.parallel-period-head) {
+  min-width: 9.5rem;
+  width: 9.5rem;
+}
+
+.parallel-table thead th.parallel-period-head,
+.parallel-table tbody th.parallel-period {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  width: 2.4rem;
+  min-width: 2.4rem;
+  max-width: 2.4rem;
+  padding: 0.35rem 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  color: var(--brand);
+  background: #e8f2ec;
+  background-clip: padding-box;
+}
+
+.parallel-table thead th.parallel-period-head {
+  top: 0;
+  z-index: 12;
+  color: #fff;
+  background: #1a4a3a;
+  box-shadow: 2px 2px 8px rgba(22, 48, 40, 0.1);
+}
+
+.parallel-table tbody th.parallel-period {
+  z-index: 5;
+  box-shadow: 2px 0 8px rgba(22, 48, 40, 0.06);
+}
+
+.parallel-cell {
+  min-width: 9.5rem;
+  width: 9.5rem;
+  max-width: 12rem;
+  padding: 0.4rem 0.45rem;
+  background: #fff;
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.parallel-cell.is-event {
+  color: #5b4a9a;
+}
+
+.parallel-cell.tone-empty {
+  background: #fafcfb;
+}
+
+.parallel-cell.tone-duty {
+  background: var(--duty-soft);
+  color: var(--duty);
+}
+
+.parallel-cell.tone-replaced {
+  background: var(--replaced-soft);
+  color: var(--replaced);
+}
+
+.parallel-cell.tone-needs {
+  background: var(--absent-soft);
+  color: var(--absent);
+}
+
+.parallel-cell.tone-cancelled {
+  background: #f2f4f7;
+  color: #8a9691;
+}
+
+.parallel-cell.tone-override {
+  background: var(--override-soft);
+  color: var(--override);
+}
+
+.parallel-cell-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.parallel-cell-line {
+  font-weight: 650;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.parallel-cell.is-dash .parallel-cell-line.is-dash {
+  font-weight: 700;
+  color: #9aa8a2;
+  font-size: 1.05em;
+}
+
+.tone-cancelled .parallel-cell-line {
+  text-decoration: line-through;
+}
+
+@media (max-width: 720px) {
+  .parallel-class-picker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.7rem 0.7rem 0.55rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .parallel-scroll {
+    overflow-x: hidden;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+
+  .parallel-table {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  /* Р§СѓС‚СЊ С€РёСЂРµ в„– вЂ” СѓРґРѕР±РЅРµРµ С‡РёС‚Р°С‚СЊ С†РёС„СЂСѓ */
+  .parallel-table thead th.parallel-period-head,
+  .parallel-table tbody th.parallel-period {
+    width: 2.15rem !important;
+    min-width: 2.15rem !important;
+    max-width: 2.15rem !important;
+    padding: 0.3rem 0 !important;
+    font-size: 0.8rem;
+  }
+
+  /* РќР° РјРѕР±РёР»Рµ РІРёРґРµРЅ С‚РѕР»СЊРєРѕ РІС‹Р±СЂР°РЅРЅС‹Р№ РєР»Р°СЃСЃ */
+  .parallel-table thead th.parallel-class-col,
+  .parallel-table td.parallel-cell {
+    display: none;
+  }
+
+  .parallel-table thead th.parallel-class-col.is-active-col,
+  .parallel-table td.parallel-cell.is-active-col {
+    display: table-cell;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 0.5rem 0.55rem;
+    font-size: 0.88rem;
+  }
+
+  /* Р—Р°РіРѕР»РѕРІРѕРє РєР»Р°СЃСЃР° РЅР° РјРѕР±РёР»Рµ РЅРµ РЅСѓР¶РµРЅ вЂ” РµСЃС‚СЊ РєРЅРѕРїРєРё */
+  .parallel-table thead th.parallel-class-col.is-active-col {
+    font-size: 0.95rem;
